@@ -1,0 +1,7 @@
+.env
+.idea
+.wttd
+*.sqlite3
+*pyc
+__pycache__
+mod-1-28-mapa-da-estrutura-do-eventex.zip
