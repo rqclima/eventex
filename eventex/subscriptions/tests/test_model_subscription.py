@@ -9,7 +9,7 @@ class SubscriptionModelTest(TestCase):
         self.obj = Subscription(
             name='Rodrigo Queiroz',
             cpf='12345678901',
-            email='rqclima@gmail.com',
+            email='rodrigo@queiroz.com',
             phone='81 99999-9999'
         )
         self.obj.save()

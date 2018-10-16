@@ -8,7 +8,7 @@ class SubscriptionDetailGet(TestCase):
         self.obj = Subscription.objects.create(
             name='Rodrigo Queiroz',
             cpf='12345678901',
-            email='rqclima@gmail.com',
+            email='rodrigo@queiroz.com',
             phone='81 99999-9999',
         )
         self.resp = self.client.get('/inscricao/{}/'.format(self.obj.pk))
