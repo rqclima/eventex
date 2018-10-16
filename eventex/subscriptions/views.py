@@ -30,7 +30,7 @@ def create(request):
                'subscriptions/subscription_email.txt',
                {'subscription': subscription})
 
-    return HttpResponseRedirect('/inscricao/{}/'.format(subscription.pk))
+    return HttpResponseRedirect('/inscricao/{}/'.format(subscription.hash_id))
 
 
 def _send_mail(subject, from_, to, template_name, context):
@@ -42,9 +42,9 @@ def new(request):
     return render(request, 'subscriptions/subscription_form.html', {'form': SubscriptionForm()})
 
 
-def detail(request, pk):
+def detail(request, hash_id):
     try:
-        subscription = Subscription.objects.get(pk=pk)
+        subscription = Subscription.objects.get(hash_id=hash_id)
     except Subscription.DoesNotExist:
         raise Http404
 
