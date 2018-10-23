@@ -4,6 +4,7 @@ Sistema de Eventos encomendado pela Morena.
 
 [![Build Status](https://travis-ci.org/rqclima/eventex.svg?branch=master)](https://travis-ci.org/rqclima/eventex)
 
+[![Coverage Status](https://coveralls.io/repos/github/rqclima/eventex/badge.svg?branch=master)](https://coveralls.io/github/rqclima/eventex?branch=master)
 
 ## Como desenvolver?
 
