@@ -3,8 +3,8 @@
 Sistema de Eventos encomendado pela Morena.
 
 [![Build Status](https://travis-ci.org/rqclima/eventex.svg?branch=master)](https://travis-ci.org/rqclima/eventex)
-
 [![Coverage Status](https://coveralls.io/repos/github/rqclima/eventex/badge.svg?branch=master)](https://coveralls.io/github/rqclima/eventex?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/86ff47ac18b3415b8f9ea0b026f9dff2)](https://www.codacy.com/app/rqclima/eventex?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=rqclima/eventex&amp;utm_campaign=Badge_Grade)
 
 ## Como desenvolver?
 
