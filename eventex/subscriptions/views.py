@@ -1,46 +1,26 @@
-from django.conf import settings
-from django.core import mail
-from django.http import HttpResponseRedirect, Http404
-from django.shortcuts import render, resolve_url as r
-from django.template.loader import render_to_string
+from django.http import Http404
+from django.shortcuts import render
+from django.views.generic.edit import CreateView
 
 from eventex.subscriptions.forms import SubscriptionForm
+from eventex.subscriptions.mixins import EmailCreateMixin
 from eventex.subscriptions.models import Subscription
 
 
-def new(request):
-    if request.method == 'POST':
-        return create(request)
-
-    return empty_form(request)
-
-
-def empty_form(request):
-    return render(request, 'subscriptions/subscription_form.html', {'form': SubscriptionForm()})
+class EmailCreateView(EmailCreateMixin, CreateView):
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        self.send_mail()
+        return response
 
 
-def create(request):
-    form = SubscriptionForm(request.POST)
-
-    if not form.is_valid():
-        return render(request, 'subscriptions/subscription_form.html',
-                      {'form': form})
-
-    subscription = form.save()
-
-    _send_mail('Confirmação de inscrição',
-               settings.DEFAULT_FROM_EMAIL,
-               subscription.email,
-               'subscriptions/subscription_email.txt',
-               {'subscription': subscription})
-
-    return HttpResponseRedirect(r('subscriptions:detail', subscription.hash_id))
+new = EmailCreateView.as_view(model=Subscription,
+                              form_class=SubscriptionForm,
+                              email_subject='Confirmação de inscrição')
 
 
-def _send_mail(subject, from_, to, template_name, context):
-    body = render_to_string(template_name, context)
-    mail.send_mail(subject, body, from_, [from_, to])
-
+# TODO Usar DetailView, ver M4A11, 23min
+# DetailView
 
 def detail(request, hash_id):
     try:
